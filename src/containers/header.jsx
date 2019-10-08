@@ -8,17 +8,17 @@ export class header extends Component {
       <div>
         <ul className="nav nav-tabs bg-primary">
           <li className="nav-item">
-            <a classNmae="nav-link" href="#">
+            <a className="nav-link" href="#">
               Accueil
             </a>
           </li>
           <li className="nav-item">
-            <a classNmae="nav-link" href="#">
+            <a className="nav-link" href="#">
               Ressources
             </a>
           </li>
           <li className="nav-item">
-            <a classNmae="nav-link" href="#">
+            <a className="nav-link" href="#">
               Connexion
             </a>
           </li>
