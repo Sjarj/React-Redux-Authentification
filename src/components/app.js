@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import Header from '../containers/header';
+import Home from '../components/home';
+import Ressources from '../components/ressources';
+import { Switch, Route } from 'react-router-dom';
 require('../style.css');
+
 export default class App extends Component {
   render() {
-    return <Header />;
+    return (
+      <React.Fragment>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/ressources" component={Ressources} />
+        </Switch>
+      </React.Fragment>
+    );
   }
 }
