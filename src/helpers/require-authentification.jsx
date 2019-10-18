@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 export default ChildComponent => {
   class requireAuthentification extends Component {
     // if not logged
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
       if (!this.props.isLogedIn) {
         this.props.history.push('/');
       }
     }
 
-    UNSAFE_componentWillUpdate(nextProps) {
-      if (!nextProps.isLogedIn) {
+    componentDidUpdate() {
+      if (!this.props.isLogedIn) {
         this.props.history.push('/');
       }
     }
