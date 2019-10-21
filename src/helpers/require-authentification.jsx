@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 export default ChildComponent => {
   class requireAuthentification extends Component {
-    // if not logged
+    // if not logged keep in the home page
     componentDidMount() {
       if (!this.props.isLogedIn) {
         this.props.history.push('/');
