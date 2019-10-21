@@ -6,7 +6,6 @@ export const setAuthentification = isLogedIn => {
       type: SET_AUTHENTIFICATION,
       payload: isLogedIn,
     });
-    dispatch(incrementActionCount());
   };
 };
 
