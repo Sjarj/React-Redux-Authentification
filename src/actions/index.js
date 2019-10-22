@@ -9,6 +9,7 @@ export const setAuthentification = isLogedIn => {
   };
 };
 
+// middleware
 export const incrementActionCount = () => {
   return {
     type: INCREMENT_ACTION_COUNT,
