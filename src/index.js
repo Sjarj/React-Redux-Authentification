@@ -8,6 +8,7 @@ import App from './components/app';
 import reducers from './reducers';
 import { BrowserRouter } from 'react-router-dom';
 import { actionCounter } from './middleware/action-counter';
+import { createStore, applyMiddleware } from 'redux';
 
 const createStoreWithMiddleware = applyMiddleware(thunk, actionCounter)(
   createStore
@@ -17,7 +18,7 @@ ReactDOM.render(
     store={createStoreWithMiddleware(
       reducers,
       window.__REDUX_DEVTOOLS_EXTENSION__ &&
-        window.__REDUX_DEVTOOLS_EXTENSION__()
+      window.__REDUX_DEVTOOLS_EXTENSION__()
     )}>
     <BrowserRouter>
       <App />
