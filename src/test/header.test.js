@@ -10,5 +10,14 @@ import RootTest from './root-test'
 describe('Test sur Header', () => {
     it('Render du composant connecté sans erreur', () => {
         const wrapper = shallow(<RootTest><Header /></RootTest>)
+
+    })
+    it('Test que le libellé du bouton est bien "connexion" puis "déconnexion" apres clique', () => {
+        const wrapper = mount(<RootTest><Header /></RootTest>)
+        expect(wrapper.find("a").at(2).text()).toEqual("Connexion")
+        wrapper.find("a").at(2).simulate("click")
+        expect(wrapper.find("a").at(2).text()).toEqual("Déconnexion")
+
+
     })
 })
