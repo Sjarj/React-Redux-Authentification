@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions";
+import { Link } from "react-router-dom";
 
 export class header extends Component {
   onclickAuthentification = () => {
-    this.props.setAuthentification(!this.props.isLogedIn);
+    this.props.setAuthentification(!this.props.isLoggedIn);
   };
 
   renderAuthentificationLabel = () => {
-    return this.props.isLogedIn ? 'Déconnexion' : 'Connexion';
+    return this.props.isLoggedIn ? "Déconnexion" : "Connexion";
   };
 
   render() {
@@ -30,7 +30,8 @@ export class header extends Component {
             <a
               className="nav-link"
               href="#"
-              onClick={this.onclickAuthentification}>
+              onClick={this.onclickAuthentification}
+            >
               {this.renderAuthentificationLabel()}
             </a>
           </li>
@@ -41,7 +42,7 @@ export class header extends Component {
 }
 
 const mapStateToProps = state => ({
-  isLogedIn: state.authentification.isLogedIn,
+  isLoggedIn: state.authentification.isLoggedIn
 });
 
 export default connect(
