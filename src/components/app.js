@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import Header from '../containers/header';
-import Home from '../components/home';
-import Ressources from '../components/ressources';
-import { Switch, Route } from 'react-router-dom';
-import RequireAuthentification from '../helpers/require-authentification';
-import TodoApp from './todo-app';
-require('../style.css');
+import React, { Component } from "react";
+import Header from "../containers/header";
+import Home from "../components/home";
+import Ressources from "../components/ressources";
+import { Switch, Route } from "react-router-dom";
+import RequireAuthentification from "../helpers/require-authentification";
+import TodoApp from "./todo-app";
+require("../style.css");
 
 export default class App extends Component {
   render() {
@@ -13,7 +13,7 @@ export default class App extends Component {
       <React.Fragment>
         <Header />
         <Switch>
-          <Route exact path="/" component={TodoApp} />
+          <Route exact path="/" component={Ressources} />
           <Route
             exact
             path="/ressources"
