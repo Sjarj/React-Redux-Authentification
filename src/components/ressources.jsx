@@ -4,7 +4,8 @@ import { addRessource } from "../actions";
 import {
   getIntegerList,
   getContainsOnelist,
-  getPrimeNumberList
+  getPrimeNumberList,
+  getspecialNumbersList
 } from "../selectors";
 
 class Ressources extends Component {
@@ -35,7 +36,10 @@ class Ressources extends Component {
           Entier premiers{" "}
           <ul>{this.renderRessource(this.props.primeRessources)}</ul>
         </div>
-        <div className="col">Entiers premiers contenants "1"</div>
+        <div className="col">
+          Entiers premiers contenants "1"{" "}
+          <ul>{this.renderRessource(this.props.specialRessources)}</ul>
+        </div>
       </div>
     );
   }
@@ -44,7 +48,8 @@ class Ressources extends Component {
 const mapStateToProps = state => ({
   integerRessources: getIntegerList(state),
   containsOneRessources: getContainsOnelist(state),
-  primeRessources: getPrimeNumberList(state)
+  primeRessources: getPrimeNumberList(state),
+  specialRessources: getspecialNumbersList(state)
 });
 
 const mapDispatchToProps = {
