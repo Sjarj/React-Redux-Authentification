@@ -15,7 +15,7 @@ mongoose.connection
   .on("error", error => console.error("Erreur de connexion", error));
 
 expressServer.use(morgan("combined"));
-expressServer.use(bodyParser.json({ type: "*/" }));
+expressServer.use(bodyParser.json({ type: "*/*" }));
 
 const port = 3090;
 const server = http.createServer(expressServer);
