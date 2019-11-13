@@ -10,5 +10,6 @@ expressServer.use(bodyParser.json({ type: "*/*" }));
 
 const port = 3090;
 const server = http.createServer(expressServer);
+router(expressServer);
 server.listen(port);
 console.log("Le serveur écoute sur le port :", port);
