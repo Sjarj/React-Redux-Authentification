@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 
 mongoose.connect(
   "mongodb+srv://Sjarj:lesilence@cluster0-l1jes.mongodb.net/test?retryWrites=true&w=majority",
-  { useUnifiedTopology: true, useNewUrlParser: true }
+  { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
 );
 mongoose.connection
   .once("open", () => console.log("Connecté à Mlab"))
