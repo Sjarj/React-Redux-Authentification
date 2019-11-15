@@ -1,11 +1,11 @@
 const User = require("../models/user");
 const lodash = require("lodash");
 
-exports.signup = (req, res, next) => {
+exports.signup = function(req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
 
-  User.findOne({ email: email }, (err, existingUser) => {
+  User.findOne({ email: email }, function(err, existingUser) {
     if (err) {
       return next(err);
     }
@@ -19,7 +19,7 @@ exports.signup = (req, res, next) => {
         email: email,
         password: password
       });
-      user.save(err => {
+      user.save(function(err) {
         if (err) {
           return next(err);
         }

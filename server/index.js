@@ -11,8 +11,10 @@ mongoose.connect(
   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
 );
 mongoose.connection
-  .once("open", () => console.log("Connecté à Mlab"))
-  .on("error", () => {
+  .once("open", function() {
+    console.log("Connecté à Mlab");
+  })
+  .on("error", function(error) {
     console.log("Erreur de connexion à Mlab :", error);
   });
 

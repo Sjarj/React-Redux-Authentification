@@ -1,4 +1,4 @@
 const AuthentificationController = require("./controllers/authentification");
-module.exports = expressServer => {
+module.exports = function(expressServer) {
   expressServer.post("/signup", AuthentificationController.signup);
 };
