@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
 const FIELDS = { email: 'email', password: 'password' };
+
 class Signin extends Component {
   handleSubmit = credentials => {
     this.props.signinUser(credentials, this.props.history);
