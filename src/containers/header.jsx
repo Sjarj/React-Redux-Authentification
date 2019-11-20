@@ -4,8 +4,29 @@ import * as actions from '../actions';
 import { Link } from 'react-router-dom';
 
 export class header extends Component {
-  renderAuthentificationLabel = () => {
-    return this.props.isLoggedIn ? 'Déconnexion' : 'Connexion';
+  renderAuthentificationLink = () => {
+    if (this.props.isLoggedIn) {
+      return (
+        <li className='nav-item'>
+          <Link className='nav-link' to={'/signout'}>
+            Déconnexion
+          </Link>
+        </li>
+      );
+    } else {
+      return [
+        <li key={1} className='nav-item'>
+          <Link className='nav-link' to={'/signin'}>
+            Connexion
+          </Link>
+        </li>,
+        <li key={2} className='nav-item'>
+          <Link className='nav-link' to={'/signup'}>
+            Inscription
+          </Link>
+        </li>
+      ];
+    }
   };
 
   render() {
@@ -22,11 +43,7 @@ export class header extends Component {
               Ressources
             </Link>
           </li>
-          <li className='nav-item'>
-            <Link className='nav-link' to={'/signin'}>
-              {this.renderAuthentificationLabel()}
-            </Link>
-          </li>
+          {this.renderAuthentificationLink()}
         </ul>
       </div>
     );

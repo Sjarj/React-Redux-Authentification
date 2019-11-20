@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { addRessource } from "../actions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addRessource } from '../actions';
 import {
   getIntegerList,
   getContainsOnelist,
   getPrimeNumberList,
   getspecialNumbersList
-} from "../selectors";
+} from '../selectors';
 
 class Ressources extends Component {
   renderRessource = ressources => {
@@ -15,29 +15,29 @@ class Ressources extends Component {
 
   render() {
     return (
-      <div className="row mt-3">
-        <div className="col">
+      <div className='row mt-3'>
+        <div className='col'>
           <button
-            type="button"
+            type='button'
             onClick={() => this.props.addRessource()}
-            className="btn btn-raised btn-primary"
+            className='btn btn-raised btn-primary'
           >
             Ajouter une ressource
           </button>
         </div>
-        <div className="col">
+        <div className='col'>
           Entiers<ul>{this.renderRessource(this.props.integerRessources)}</ul>
         </div>
-        <div className="col">
-          Contiennent "1"{" "}
+        <div className='col'>
+          Contiennent "1"{' '}
           <ul>{this.renderRessource(this.props.containsOneRessources)}</ul>
         </div>
-        <div className="col">
-          Entier premiers{" "}
+        <div className='col'>
+          Entier premiers{' '}
           <ul>{this.renderRessource(this.props.primeRessources)}</ul>
         </div>
-        <div className="col">
-          Entiers premiers contenants "1"{" "}
+        <div className='col'>
+          Entiers premiers contenants "1"{' '}
           <ul>{this.renderRessource(this.props.specialRessources)}</ul>
         </div>
       </div>
@@ -56,7 +56,4 @@ const mapDispatchToProps = {
   addRessource
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Ressources);
+export default connect(mapStateToProps, mapDispatchToProps)(Ressources);

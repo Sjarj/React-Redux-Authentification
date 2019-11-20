@@ -41,3 +41,10 @@ export const signinUser = ({ email, password }, history) => {
       });
   };
 };
+
+export const signoutUser = () => {
+  return function(dispatch) {
+    dispatch(setAuthentification(false));
+    localStorage.removeItem('token');
+  };
+};

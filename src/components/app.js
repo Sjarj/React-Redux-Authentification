@@ -4,7 +4,8 @@ import Home from '../components/home';
 import Ressources from '../components/ressources';
 import { Switch, Route } from 'react-router-dom';
 import RequireAuthentification from '../helpers/require-authentification';
-import Signin from './signin';
+import Signin from '../containers/signin';
+import Signout from '../containers/signout';
 require('../style.css');
 
 export default class App extends Component {
@@ -20,6 +21,7 @@ export default class App extends Component {
             component={RequireAuthentification(Ressources)}
           />
           <Route exact path='/signin' component={Signin} />
+          <Route exact path='/signout' component={Signout} />
         </Switch>
       </React.Fragment>
     );
