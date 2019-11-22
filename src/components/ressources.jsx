@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addRessource } from '../actions';
+import { addRessource, getSpecialRessource } from '../actions';
 import {
   getIntegerList,
   getContainsOnelist,
@@ -9,6 +9,10 @@ import {
 } from '../selectors';
 
 class Ressources extends Component {
+  componentDidMount() {
+    this.props.getSpecialRessource();
+  }
+
   renderRessource = ressources => {
     return ressources.map(ressource => <li key={ressource}>{ressource}</li>);
   };
@@ -40,6 +44,7 @@ class Ressources extends Component {
           Entiers premiers contenants "1"{' '}
           <ul>{this.renderRessource(this.props.specialRessources)}</ul>
         </div>
+        {this.props.message}
       </div>
     );
   }
@@ -49,11 +54,13 @@ const mapStateToProps = state => ({
   integerRessources: getIntegerList(state),
   containsOneRessources: getContainsOnelist(state),
   primeRessources: getPrimeNumberList(state),
-  specialRessources: getspecialNumbersList(state)
+  specialRessources: getspecialNumbersList(state),
+  message: state.ressources.message
 });
 
 const mapDispatchToProps = {
-  addRessource
+  addRessource,
+  getSpecialRessource
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Ressources);

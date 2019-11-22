@@ -1,7 +1,8 @@
 import {
   SET_AUTHENTIFICATION,
   INCREMENT_ACTION_COUNT,
-  ADD_RESSOURCE
+  ADD_RESSOURCE,
+  PARSE_MESSAGE
 } from './action-types';
 import axios from 'axios';
 
@@ -61,5 +62,20 @@ export const signoutUser = () => {
   return function(dispatch) {
     dispatch(setAuthentification(false));
     localStorage.removeItem('token');
+  };
+};
+
+export const getSpecialRessource = () => {
+  return function(dispatch) {
+    axios
+      .get(`${BASE_URL}/specialRessource`, {
+        headers: { authorization: localStorage.getItem('token') }
+      })
+      .then(response => {
+        dispatch({ type: PARSE_MESSAGE, payload: response.data.result });
+      })
+      .catch(err => {
+        console.log('erreur', err);
+      });
   };
 };
