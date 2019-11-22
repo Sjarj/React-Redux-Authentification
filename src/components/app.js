@@ -6,6 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import RequireAuthentification from '../helpers/require-authentification';
 import Signin from '../containers/signin';
 import Signout from '../containers/signout';
+import Signup from '../containers/signup';
 require('../style.css');
 
 export default class App extends Component {
@@ -22,6 +23,7 @@ export default class App extends Component {
           />
           <Route exact path='/signin' component={Signin} />
           <Route exact path='/signout' component={Signout} />
+          <Route exact path='/signup' component={Signup} />
         </Switch>
       </React.Fragment>
     );

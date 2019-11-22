@@ -8,6 +8,7 @@ class Signin extends Component {
   handleSubmit = credentials => {
     this.props.signinUser(credentials, this.props.history);
   };
+
   render() {
     return (
       <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>

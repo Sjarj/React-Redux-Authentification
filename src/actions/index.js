@@ -42,6 +42,21 @@ export const signinUser = ({ email, password }, history) => {
   };
 };
 
+export const signupUser = ({ email, password }, history) => {
+  return function(dispatch) {
+    axios
+      .post(`${BASE_URL}/signup`, { email, password })
+      .then(response => {
+        localStorage.setItem('token', response.data.token);
+        dispatch(setAuthentification(true));
+        history.push('/ressources');
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+};
+
 export const signoutUser = () => {
   return function(dispatch) {
     dispatch(setAuthentification(false));
