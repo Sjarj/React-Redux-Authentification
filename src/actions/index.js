@@ -2,7 +2,9 @@ import {
   SET_AUTHENTIFICATION,
   INCREMENT_ACTION_COUNT,
   ADD_RESSOURCE,
-  PARSE_MESSAGE
+  PARSE_MESSAGE,
+  PARSE_ERROR,
+  RESET_ERROR
 } from './action-types';
 import axios from 'axios';
 
@@ -78,4 +80,12 @@ export const getSpecialRessource = () => {
         console.log('erreur', err);
       });
   };
+};
+
+const parseError = errorMessage => {
+  return { type: PARSE_ERROR, payload: errorMessage };
+};
+
+const resetError = () => {
+  return { type: RESET_ERROR };
 };
