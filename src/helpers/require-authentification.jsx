@@ -1,23 +1,23 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 export default ChildComponent => {
   class requireAuthentification extends Component {
     // if not logged keep in the home page
     componentDidMount() {
       if (!this.props.isLoggedIn) {
-        this.props.history.push("/");
+        this.props.history.push('/');
       }
     }
 
     componentDidUpdate() {
       if (!this.props.isLoggedIn) {
-        this.props.history.push("/");
+        this.props.history.push('/');
       }
     }
 
     render() {
-      return <ChildComponent />;
+      return this.props.isLoggedIn && <ChildComponent />;
     }
   }
   const mapStateToProps = state => ({
