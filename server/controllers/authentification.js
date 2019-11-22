@@ -2,6 +2,7 @@ const User = require("../models/user");
 const lodash = require("lodash");
 const jwt = require("jwt-simple");
 const config = require("../../config");
+const passport = require("passport");
 
 function getTokenForUser(user) {
   const timeStamp = new Date().getTime();
@@ -44,5 +45,16 @@ exports.signup = function(req, res, next) {
 };
 
 exports.signin = function(req, res, next) {
-  res.json({ token: getTokenForUser(req.user) });
+  passport.authenticate("local", function(err, user, info) {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return res
+        .status(500)
+        .send({ message: "les identifiants ne sont pas valides" });
+    } else {
+      res.json({ token: getTokenForUser(req.user) });
+    }
+  })(req, res, next);
 };

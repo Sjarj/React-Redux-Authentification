@@ -40,7 +40,7 @@ export const signinUser = ({ email, password }, history) => {
         history.push("/ressources");
       })
       .catch(error => {
-        dispatch(parseError("Identifiant invalide"));
+        dispatch(parseError(error.response.data.message));
       });
   };
 };
