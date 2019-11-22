@@ -5,10 +5,10 @@ import {
   PARSE_MESSAGE,
   PARSE_ERROR,
   RESET_ERROR
-} from './action-types';
-import axios from 'axios';
+} from "./action-types";
+import axios from "axios";
 
-const BASE_URL = 'http://localhost:3090';
+const BASE_URL = "http://localhost:3090";
 
 export const setAuthentification = isLoggedIn => {
   return {
@@ -35,12 +35,12 @@ export const signinUser = ({ email, password }, history) => {
     axios
       .post(`${BASE_URL}/signin`, { email, password })
       .then(response => {
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem("token", response.data.token);
         dispatch(setAuthentification(true));
-        history.push('/ressources');
+        history.push("/ressources");
       })
       .catch(error => {
-        console.error(error);
+        dispatch(parseError("Identifiant invalide"));
       });
   };
 };
@@ -50,9 +50,9 @@ export const signupUser = ({ email, password }, history) => {
     axios
       .post(`${BASE_URL}/signup`, { email, password })
       .then(response => {
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem("token", response.data.token);
         dispatch(setAuthentification(true));
-        history.push('/ressources');
+        history.push("/ressources");
       })
       .catch(error => {
         console.error(error);
@@ -63,7 +63,7 @@ export const signupUser = ({ email, password }, history) => {
 export const signoutUser = () => {
   return function(dispatch) {
     dispatch(setAuthentification(false));
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
   };
 };
 
@@ -71,21 +71,21 @@ export const getSpecialRessource = () => {
   return function(dispatch) {
     axios
       .get(`${BASE_URL}/specialRessource`, {
-        headers: { authorization: localStorage.getItem('token') }
+        headers: { authorization: localStorage.getItem("token") }
       })
       .then(response => {
         dispatch({ type: PARSE_MESSAGE, payload: response.data.result });
       })
       .catch(err => {
-        console.log('erreur', err);
+        console.log("erreur", err);
       });
   };
 };
 
-const parseError = errorMessage => {
+export const parseError = errorMessage => {
   return { type: PARSE_ERROR, payload: errorMessage };
 };
 
-const resetError = () => {
+export const resetError = () => {
   return { type: RESET_ERROR };
 };
